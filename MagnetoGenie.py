@@ -534,12 +534,10 @@ for i in summary:
     if ls != "bin":
         genome = ls[0]
         gene = ls[1]
-        process = ls[2]
-        substrate = ls[3]
-        orf = ls[4]
-        evalue = ls[5]
-        bitscore = ls[6]
-        sequence = ls[7]
+        orf = ls[2]
+        evalue = ls[3]
+        bitscore = ls[4]
+        sequence = ls[5]
         bitcut = bitDict[ls[1]]["bit"]
         summaryDict[genome][orf]["gene"] = gene
         summaryDict[genome][orf]["process"] = process
