@@ -408,11 +408,13 @@ for i in bits:
 print("...")
 
 
+
+os.system("mkdir " + args.outdir)
 count = 0
 BinDict = defaultdict(lambda: defaultdict(lambda: 'EMPTY'))
 out = open("%s/%s.csv" % (args.outdir, args.out), "w")
 out.write(
-    "bin" + "," + "gene" + "," + "process" + "," + "substrate" + "," + "ORF" + "," + "evalue" + "," + "bitscore" + "," + "sequence" + "\n")
+    "bin" + "," + "gene" + "," + "ORF" + "," + "evalue" + "," + "bitscore" + "," + "sequence" + "\n")
 for i in binDirLS:
     HMMdict = defaultdict(lambda: defaultdict(lambda: 'EMPTY'))
     if not re.match(r'^\.', i) and i != (args.out + ".csv") and lastItem(i.split(".")) == args.bin_ext:
@@ -452,6 +454,7 @@ for i in binDirLS:
                 perc = (count / len(HMMdirLS)) * 100
                 # print(str(perc) + "%")
                 # print("%.2f" % perc + "% done")
+                print("")
                 sys.stdout.write("analyzing " + i + ": %d%%   \r" % (perc + 1))
                 sys.stdout.flush()
                 if not re.match(r'^\.', hmm):
@@ -517,7 +520,7 @@ for i in binDirLS:
 
         for key in HMMdict.keys():
             out.write(
-                i + "," + HMMdict[key]["hmm"] + "," + HMMdict[key]["process"] + "," + HMMdict[key]["element"] +
+                i + "," + HMMdict[key]["hmm"] +
                 "," + key + "," + HMMdict[key]["evalue"] + "," + HMMdict[key]["bitscore"] + "," + fastaFile[key]
                 + "\n")
         os.system("rm -r " + args.bin_dir + "/" + i + "-HMM")
