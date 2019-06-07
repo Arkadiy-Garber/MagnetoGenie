@@ -540,8 +540,6 @@ for i in summary:
         sequence = ls[5]
         bitcut = bitDict[ls[1]]["bit"]
         summaryDict[genome][orf]["gene"] = gene
-        summaryDict[genome][orf]["process"] = process
-        summaryDict[genome][orf]["substrate"] = substrate
         summaryDict[genome][orf]["evalue"] = evalue
         summaryDict[genome][orf]["bitscore"] = bitscore
         summaryDict[genome][orf]["sequence"] = sequence
@@ -572,29 +570,25 @@ for i in CoordDict.keys():
             if len(RemoveDuplicates(k)) == 1:
                 orf = j + "_" + str(k[0])
 
-                out.write(summaryDict[i][orf]["substrate"] + "," + summaryDict[i][orf]["process"] + "," +
-                          summaryDict[i][orf]["gene"] + "," + i + "," + orf + "," + summaryDict[i][orf]["evalue"] +
+                out.write(summaryDict[i][orf]["gene"] + "," + i + "," + orf + "," + summaryDict[i][orf]["evalue"] +
                           "," + str(summaryDict[i][orf]["bitscore"]) + "," + str(
                     summaryDict[i][orf]["bitcut"]) + "," +
                           str(summaryDict[i][orf]["sequence"]) + "," + str(counter) + "\n")
 
-                out.write(
-                    "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "\n")
+                out.write("#########################################################################################\n")
                 counter += 1
 
             else:
                 for l in RemoveDuplicates(k):
                     orf = j + "_" + str(l)
 
-                    out.write(summaryDict[i][orf]["substrate"] + "," + summaryDict[i][orf]["process"] + "," +
-                              summaryDict[i][orf]["gene"] + "," + i + "," + orf + "," + summaryDict[i][orf][
+                    out.write(summaryDict[i][orf]["gene"] + "," + i + "," + orf + "," + summaryDict[i][orf][
                                   "evalue"] +
                               "," + str(summaryDict[i][orf]["bitscore"]) + "," + str(
                         summaryDict[i][orf]["bitcut"]) +
                               "," + str(summaryDict[i][orf]["sequence"]) + "," + str(counter) + "\n")
 
-                out.write(
-                    "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "," + "#" + "\n")
+                out.write("#########################################################################################\n")
                 counter += 1
 
 out.close()
