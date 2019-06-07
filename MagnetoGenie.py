@@ -599,8 +599,7 @@ for i in summary:
         ls = i.rstrip().split(",")
         clu = int(ls[7])
         clusterDict[clu]["line"].append(ls)
-        clusterDict[clu]["gene"].append(ls[2])
-        clusterDict[clu]["category"].append(ls[0])
+        clusterDict[clu]["gene"].append(ls[0])
 
 print("..")
 print("...")
@@ -619,9 +618,7 @@ for i in sorted(clusterDict.keys()):
 
         else:
             for j in clusterDict[i]["line"]:
-                out.write(
-                    j[0] + "," + j[1] + "," + j[2] + "," + j[3] + "," + j[4] + "," + j[5] + "," + j[6] + "," + j[
-                        7] + "\n")
+                out.write(j[0] + "," + j[1] + "," + j[2] + "," + j[3] + "," + j[4] + "," + j[5] + "," + j[6] + "," + j[7] + "\n")
 
             out.write("#########################################################################################\n")
 
