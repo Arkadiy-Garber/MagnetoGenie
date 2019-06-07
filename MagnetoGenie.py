@@ -582,10 +582,8 @@ for i in CoordDict.keys():
                 for l in RemoveDuplicates(k):
                     orf = j + "_" + str(l)
 
-                    out.write(summaryDict[i][orf]["gene"] + "," + i + "," + orf + "," + summaryDict[i][orf][
-                                  "evalue"] +
-                              "," + str(summaryDict[i][orf]["bitscore"]) + "," + str(
-                        summaryDict[i][orf]["bitcut"]) +
+                    out.write(summaryDict[i][orf]["gene"] + "," + i + "," + orf + "," + summaryDict[i][orf]["evalue"] +
+                              "," + str(summaryDict[i][orf]["bitscore"]) + "," + str(summaryDict[i][orf]["bitcut"]) +
                               "," + str(summaryDict[i][orf]["sequence"]) + "," + str(counter) + "\n")
 
                 out.write("#########################################################################################\n")
@@ -599,7 +597,7 @@ summary = open("%s/%s-2.csv" % (args.outdir, args.out), "r")
 for i in summary:
     if not re.match(r'#', i):
         ls = i.rstrip().split(",")
-        clu = int(ls[9])
+        clu = int(ls[7])
         clusterDict[clu]["line"].append(ls)
         clusterDict[clu]["gene"].append(ls[2])
         clusterDict[clu]["category"].append(ls[0])
@@ -623,9 +621,9 @@ for i in sorted(clusterDict.keys()):
             for j in clusterDict[i]["line"]:
                 out.write(
                     j[0] + "," + j[1] + "," + j[2] + "," + j[3] + "," + j[4] + "," + j[5] + "," + j[6] + "," + j[
-                        7] + "," + j[8] + "," + j[9] + "\n")
+                        7] + "\n")
 
-            out.write("####################################################" + "\n")
+            out.write("#########################################################################################\n")
 
 out.close()
 
